@@ -110,18 +110,18 @@ class estimator(object):
         return boards,scores
     
 def main(unused_argv):
-    estimator = estimator()
+    estim = estimator()
     allboards = []
     allscores = []
     for i in range(1000):
         game = game.game()
-        game.play(estimator.randomized_move, estimator.randomized_move)
-        boards, scores = estimator.assign_qscores(game)
+        game.play(estim.randomized_move, estim.randomized_move)
+        boards, scores = estim.assign_qscores(game)
         allboards += boards
         allscores += scores
-        estimator.learn(boards,scores)
+        estim.learn(boards,scores)
         logging.info("Game {0} played and learned.".format(i))
-    #estimator.learn(allboards,allscores)
+    estim.learn(allboards,allscores)
         
 if __name__ == "__main__":
     logging.basicConfig()

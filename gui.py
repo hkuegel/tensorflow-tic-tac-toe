@@ -8,7 +8,7 @@ import traceback
 class gui(object):
     """graphical interface for tic tac toe"""
     
-    def __init__(self, ai, player_starts=False):
+    def __init__(self, ai, player_starts=True):
         self.game = game.game()
         self.player_starts = player_starts
         self.ai = ai
