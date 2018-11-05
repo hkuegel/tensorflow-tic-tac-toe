@@ -12,12 +12,13 @@ def main(unused_argv):
     for i in range(1000):
         g = game.game()
         g.play(estim.randomized_move, estim.randomized_move)
+        #g.play(estim.move, estim.move)
         boards, scores = estim.assign_qscores(g)
         allboards += boards
         allscores += scores
         estim.learn(boards,scores)
         logging.info("Game {0} played and learned.".format(i))
-    estim.learn(allboards,allscores)
+    #estim.learn(allboards,allscores)
         
 if __name__ == "__main__":
     logging.basicConfig()

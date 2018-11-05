@@ -79,17 +79,17 @@ class estimator(object):
                     if one_ahead > best_opponent_score :
                         best_opponent_score = one_ahead
                 else :
-                    best_opponent_score = s * -100
+                    best_opponent_score = s * 100 
                     break
                         
-            if best_opponent_score < best_score or best_move is None:
+            if  best_score < best_opponent_score or best_move is None:
                 best_score = best_opponent_score
                 best_move = coords
         game.move(*best_move)   
         logging.info("Evaluation = {0}".format(best_score))
 
     def randomized_move(self, game) :
-        if random.randint(0,4) < 4:
+        if random.randint(0,2) < 2:
             self.move(game)
         else:
             players.random_move(game)
