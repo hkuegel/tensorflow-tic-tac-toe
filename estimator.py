@@ -13,7 +13,7 @@ class estimator(object):
     def __init__(self):
         feature_columns = [tf.feature_column.numeric_column("x", shape=[10])]
         self.estimator = tf.estimator.DNNRegressor(feature_columns=feature_columns,
-            hidden_units=[50, 20], model_dir="/tmp/tic_tac_toe_estimator")
+            hidden_units=[10, 10], model_dir="/tmp/tic_tac_toe_estimator")
           #  ,warm_start_from="/tmp/tic_tac_toe_estimator")
 
 
@@ -109,26 +109,7 @@ class estimator(object):
             score *= q
         return boards,scores
     
-def main(unused_argv):
-    estim = estimator()
-    allboards = []
-    allscores = []
-    for i in range(1000):
-        game = game.game()
-        game.play(estim.randomized_move, estim.randomized_move)
-        boards, scores = estim.assign_qscores(game)
-        allboards += boards
-        allscores += scores
-        estim.learn(boards,scores)
-        logging.info("Game {0} played and learned.".format(i))
-    estim.learn(allboards,allscores)
-        
-if __name__ == "__main__":
-    logging.basicConfig()
-    logging.getLogger().setLevel(logging.INFO)
-    os.environ['TF_CPP_MIN_LOG_LEVEL'] = '3'
-    tf.logging.set_verbosity(tf.logging.ERROR)
-    tf.app.run()
+
            
     
     
