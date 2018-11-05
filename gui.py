@@ -54,7 +54,7 @@ class gui(object):
 
         self.draw_board(ax)
         
-        def onclick(event):         
+        def onclick(event):      
             to_move = 'x' if self.game.moves[-1].side == 1 else 'o'
             x,y = 0.5 + math.floor(event.xdata), 0.5 + math.floor(event.ydata)
             try :

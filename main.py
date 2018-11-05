@@ -12,6 +12,9 @@ if __name__ == "__main__":
     os.environ['TF_CPP_MIN_LOG_LEVEL'] = '3'
     tf.logging.set_verbosity(tf.logging.ERROR)
     estimator = estimator.estimator()
-    gui = gui.gui(estimator)
-    gui.play()
+    while True:
+        ui = gui.gui(estimator)
+        ui.play()
+        if input("Play again y/n ?") != "y":
+            break
     #game.play(estimator.move, estimator.move)
